@@ -1,9 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Button } from '@/components/ui/button';
-import { Product } from '@/api/entities';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const ProductCardSkeleton = () => (
@@ -24,19 +22,39 @@ export default function FeaturedProducts() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const loadFeaturedProducts = async () => {
-      try {
-        setIsLoading(true);
-        // We halen maximaal 4 producten op die als 'uitgelicht' zijn gemarkeerd.
-        const products = await Product.filter({ uitgelicht: true }, '-created_date', 4);
-        setFeaturedProducts(products);
-      } catch (error) {
-        console.error("Fout bij het laden van uitgelichte producten:", error);
-      } finally {
-        setIsLoading(false);
+    const products = [
+      {
+        id: 1,
+        categorie: 'taarten',
+        naam: 'Red Velvet Taart',
+        korte_beschrijving: 'Luchtige red velvet taart met romige frosting, perfect voor verjaardagen en feestjes.',
+        vanaf_prijs: 24.95
+      },
+      {
+        id: 2,
+        categorie: 'cupcakes',
+        naam: 'Vanille Cupcakes',
+        korte_beschrijving: 'Zachte vanille cupcakes met een frisse topping, handgemaakt en feestelijk afgewerkt.',
+        vanaf_prijs: 3.5
+      },
+      {
+        id: 3,
+        categorie: 'koekjes',
+        naam: 'Ambachtelijke Koekjes',
+        korte_beschrijving: 'Heerlijke koekjes in verschillende smaken, ideaal als traktatie of cadeautje.',
+        vanaf_prijs: 6.95
+      },
+      {
+        id: 4,
+        categorie: 'cinnamonrolls',
+        naam: 'Cinnamon Rolls',
+        korte_beschrijving: 'Vers gebakken cinnamon rolls met rijke kaneelsmaak en zachte structuur.',
+        vanaf_prijs: 4.25
       }
-    };
-    loadFeaturedProducts();
+    ];
+
+    setFeaturedProducts(products);
+    setIsLoading(false);
   }, []);
 
   const getEmojiForCategory = (category) => {
@@ -56,7 +74,7 @@ export default function FeaturedProducts() {
         <div className="text-center mb-12">
           <div className="accent-line mx-auto"></div>
           <h2 className="text-3xl md:text-4xl font-bold text-[#3A2A20] mb-4">
-            KrisPy's specialiteiten
+            KrisPy&apos;s specialiteiten
           </h2>
           <p className="text-[#3A2A20]/70 text-lg max-w-2xl mx-auto">
             Een voorproefje van onze favorieten, met liefde voor jou gemaakt.
@@ -83,7 +101,7 @@ export default function FeaturedProducts() {
                     </span>
                     <Link to={createPageUrl('Bestellen')}>
                       <Button size="sm" className="btn-primary">
-                        Bekijk & Bestel
+                        Bekijk &amp; Bestel
                       </Button>
                     </Link>
                   </div>
