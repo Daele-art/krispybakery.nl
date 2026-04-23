@@ -1,17 +1,20 @@
-import { base44 } from './base44Client';
+const createMockEntity = () => ({
+  list: async () => [],
+  filter: async () => [],
+  get: async () => null,
+  create: async (data) => data,
+  update: async (id, data) => ({ id, ...data }),
+  delete: async () => true
+});
 
+export const Product = createMockEntity();
+export const GalerijItem = createMockEntity();
+export const Review = createMockEntity();
+export const Bestelling = createMockEntity();
+export const FAQItem = createMockEntity();
 
-export const Product = base44.entities.Product;
-
-export const GalerijItem = base44.entities.GalerijItem;
-
-export const Review = base44.entities.Review;
-
-export const Bestelling = base44.entities.Bestelling;
-
-export const FAQItem = base44.entities.FAQItem;
-
-
-
-// auth sdk:
-export const User = base44.auth;
+export const User = {
+  me: async () => null,
+  login: async () => null,
+  logout: async () => null
+};
