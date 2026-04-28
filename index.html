@@ -1,17 +1,24 @@
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="https://base44.com/logo_v2.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ✅ GOOGLE ANALYTICS -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YH7C7GN6XZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YH7C7GN6XZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YH7C7GN6XZ');
+    </script>
 
-    gtag('config', 'G-YH7C7GN6XZ');
-  </script>
-
-  <title>KrisPy Bakery</title>
-</head>
+    <title>KrisPy Bakery</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- ❗ BELANGRIJK: laat Vite dit zelf injecten -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
